@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, Target, Users, Zap, LineChart } from "lucide-react";
+import { CheckCircle, Target, Users, Zap, LineChart as LineChartIcon } from "lucide-react"; // Renamed LineChart to LineChartIcon to avoid any potential naming conflicts, though the original error was strange.
 import Image from "next/image";
 import Link from "next/link";
 
@@ -74,7 +74,7 @@ export default function HomePage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                 <CheckCircle className="h-5 w-5 text-green-500 inline mr-1"/> Ensures data accuracy.
+                 <CheckCircle className="h-5 w-5 text-primary inline mr-1"/> Ensures data accuracy.
               </CardContent>
             </Card>
             <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -88,13 +88,13 @@ export default function HomePage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <CheckCircle className="h-5 w-5 text-green-500 inline mr-1"/> Tailored to your metrics.
+                <CheckCircle className="h-5 w-5 text-primary inline mr-1"/> Tailored to your metrics.
               </CardContent>
             </Card>
             <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardHeader>
-                <div className="bg-green-500/10 p-3 rounded-md w-fit mb-2">
-                  <LineChart className="h-8 w-8 text-green-500" />
+                <div className="bg-primary/10 p-3 rounded-md w-fit mb-2"> {/* Changed from green-500 to primary */}
+                  <LineChartIcon className="h-8 w-8 text-primary" /> {/* Changed from text-green-500 to text-primary */}
                 </div>
                 <CardTitle>Progress Tracking</CardTitle>
                 <CardDescription>
@@ -102,7 +102,8 @@ export default function HomePage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <CheckCircle className="h-5 w-5 text-green-500 inline mr-1"/> Monitor your improvements.
+                <CheckCircle className="h-5 w-5 text-primary inline mr-1"/> {/* Changed from text-green-500 to text-primary */}
+                Monitor your improvements.
               </CardContent>
             </Card>
           </div>
