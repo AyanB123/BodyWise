@@ -25,10 +25,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark"> {/* Added dark class here for default dark theme */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen bg-background text-foreground`}>
         <Navbar />
-        <main className="flex-grow container mx-auto px-4 py-8 md:py-12">
+        {/* Removed container and padding from main for full-width sections control */}
+        <main className="flex-grow">
           {children}
         </main>
         <Toaster />
