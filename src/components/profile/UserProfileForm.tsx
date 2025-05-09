@@ -22,6 +22,7 @@ import { GENDER_OPTIONS, ETHNICITY_OPTIONS } from '@/lib/types';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { useToast } from '@/hooks/use-toast';
 import { Save, UserCircle } from 'lucide-react';
+import { useEffect } from 'react'; // Import useEffect
 
 const profileFormSchema = z.object({
   height: z.coerce.number().positive({ message: 'Height must be positive.' }).min(50, { message: 'Height must be at least 50 cm.' }).max(300, { message: 'Height cannot exceed 300 cm.' }),
@@ -39,6 +40,16 @@ const defaultProfile: UserProfile = {
   ethnicity: '',
 };
 
+// Helper function to safely get values for form initialization
+const getSafeFormValue = (value: number | string | undefined | null): string | number => {
+  if (typeof value === 'number') {
+    return value; // Keep numbers as numbers (e.g., 0, 170)
+  }
+  // For string, undefined, or null:
+  // If it's a non-empty string, keep it. Otherwise, default to empty string.
+  return (typeof value === 'string') ? value : '';
+};
+
 export default function UserProfileForm() {
   const [profile, setProfile] = useLocalStorage<UserProfile>('userProfile', defaultProfile);
   const { toast } = useToast();
@@ -46,14 +57,27 @@ export default function UserProfileForm() {
   const form = useForm<z.infer<typeof profileFormSchema>>({
     resolver: zodResolver(profileFormSchema),
     defaultValues: {
-      height: profile.height || undefined, // Use undefined for react-hook-form to treat as empty initially for type="number"
-      weight: profile.weight || undefined,
-      age: profile.age || undefined,
+      height: getSafeFormValue(profile.height),
+      weight: getSafeFormValue(profile.weight),
+      age: getSafeFormValue(profile.age),
       gender: profile.gender || '',
       ethnicity: profile.ethnicity || '',
     },
-    mode: "onChange", // Validate on change for better UX
+    mode: "onChange", 
   });
+
+  // Effect to reset form when profile data changes (e.g., after loading from localStorage)
+  useEffect(() => {
+    if (profile) {
+      form.reset({
+        height: getSafeFormValue(profile.height),
+        weight: getSafeFormValue(profile.weight),
+        age: getSafeFormValue(profile.age),
+        gender: profile.gender || '',
+        ethnicity: profile.ethnicity || '',
+      });
+    }
+  }, [profile, form]); // form includes form.reset which is stable
 
   function onSubmit(values: z.infer<typeof profileFormSchema>) {
     setProfile(values as UserProfile); 
@@ -61,12 +85,12 @@ export default function UserProfileForm() {
       title: "Profile Updated",
       description: "Your information has been saved successfully.",
       variant: "default",
-      className: "bg-green-600/90 border-green-700 text-white" // Custom success toast
+      className: "bg-green-600/90 border-green-700 text-white" 
     });
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto shadow-2xl overflow-hidden">
+    <Card className="w-full max-w-2xl mx-auto shadow-2xl overflow-hidden my-8 md:my-12">
       <CardHeader className="bg-gradient-to-br from-card to-secondary/20 p-6 md:p-8">
         <CardTitle className="text-3xl md:text-4xl font-bold flex items-center text-foreground">
           <UserCircle className="mr-3 h-8 w-8 text-primary" />
@@ -87,7 +111,8 @@ export default function UserProfileForm() {
                   <FormItem>
                     <FormLabel className="text-md">Height (cm)</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 175" {...field} className="text-base py-3 px-4"/>
+                      {/* Pass value as is; react-hook-form manages it */}
+                      <Input type="number" placeholder="e.g., 175" {...field} value={field.value === null || field.value === undefined ? '' : field.value} className="text-base py-3 px-4"/>
                     </FormControl>
                     <FormDescription className="text-sm">Enter your height in centimeters.</FormDescription>
                     <FormMessage />
@@ -101,7 +126,7 @@ export default function UserProfileForm() {
                   <FormItem>
                     <FormLabel className="text-md">Weight (kg)</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 70" {...field} className="text-base py-3 px-4"/>
+                      <Input type="number" placeholder="e.g., 70" {...field} value={field.value === null || field.value === undefined ? '' : field.value} className="text-base py-3 px-4"/>
                     </FormControl>
                     <FormDescription className="text-sm">Enter your weight in kilograms.</FormDescription>
                     <FormMessage />
@@ -115,7 +140,7 @@ export default function UserProfileForm() {
                   <FormItem>
                     <FormLabel className="text-md">Age</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 30" {...field} className="text-base py-3 px-4"/>
+                      <Input type="number" placeholder="e.g., 30" {...field} value={field.value === null || field.value === undefined ? '' : field.value} className="text-base py-3 px-4"/>
                     </FormControl>
                     <FormDescription className="text-sm">Enter your age in years.</FormDescription>
                     <FormMessage />
@@ -128,7 +153,7 @@ export default function UserProfileForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-md">Gender</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} value={field.value || ''}>
                       <FormControl>
                         <SelectTrigger className="text-base py-3 px-4">
                           <SelectValue placeholder="Select your gender" />
@@ -151,7 +176,7 @@ export default function UserProfileForm() {
                 render={({ field }) => (
                   <FormItem className="md:col-span-2">
                     <FormLabel className="text-md">Ethnicity (Optional)</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} value={field.value || ''}>
                       <FormControl>
                         <SelectTrigger className="text-base py-3 px-4">
                           <SelectValue placeholder="Select your ethnicity" />
@@ -173,7 +198,7 @@ export default function UserProfileForm() {
               type="submit" 
               size="lg" 
               className="w-full md:w-auto text-lg py-3 px-8 bg-primary hover:bg-primary/80 text-primary-foreground shadow-lg hover:shadow-primary/40 transition-all duration-300 transform hover:scale-105"
-              disabled={!form.formState.isDirty && form.formState.isValid} // Disable if no changes or invalid
+              disabled={!form.formState.isDirty && !form.formState.isValid && !form.formState.isSubmitting}
             >
               <Save className="mr-2 h-5 w-5" />
               Save Profile
