@@ -1,3 +1,4 @@
+
 export interface UserProfile {
   height: number | string; // cm
   weight: number | string; // kg
@@ -17,7 +18,7 @@ export const ETHNICITY_OPTIONS = [
   { value: 'black', label: 'Black or African American' },
   { value: 'caucasian', label: 'White or Caucasian' },
   { value: 'hispanic', label: 'Hispanic or Latino' },
-  { value: 'other', label: 'Other / Prefer not to say' },
+  { value: 'other', label: 'Other / Prefer not to declare' },
 ];
 
 export interface PosePhoto {

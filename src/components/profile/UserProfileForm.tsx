@@ -1,3 +1,4 @@
+
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -160,10 +161,9 @@ export default function UserProfileForm() {
                         {ETHNICITY_OPTIONS.map(option => (
                           <SelectItem key={option.value} value={option.value} className="text-base">{option.label}</SelectItem>
                         ))}
-                         <SelectItem value="" className="text-base italic">Prefer not to say / Other</SelectItem>
                       </SelectContent>
                     </Select>
-                    <FormDescription className="text-sm">This helps improve analysis accuracy. Select "Other" if not listed or you prefer not to say.</FormDescription>
+                    <FormDescription className="text-sm">This helps improve analysis accuracy. Select "Other / Prefer not to say" if not listed or you prefer not to declare.</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
