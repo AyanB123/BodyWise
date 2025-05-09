@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -25,10 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark"> {/* Added dark class here for default dark theme */}
+    <html lang="en" suppressHydrationWarning className="dark">
+      {/* Next.js implicitly manages the <head> tag and its content via the metadata object and other mechanisms. */}
+      {/* Ensure no characters, including spaces or newlines that could become text nodes, are here. */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen bg-background text-foreground`}>
         <Navbar />
-        {/* Removed container and padding from main for full-width sections control */}
+        {/* Main content area, full-width control is managed by individual pages/components */}
         <main className="flex-grow">
           {children}
         </main>
