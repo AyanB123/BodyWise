@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -6,7 +7,7 @@ import { Home, User, Camera, ClipboardList, LineChart, Menu } from 'lucide-react
 import Logo from '@/components/shared/Logo';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'; // Added SheetClose
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet'; // Added SheetHeader, SheetTitle
 import { useState } from 'react';
 
 const navItems = [
@@ -71,10 +72,16 @@ export default function Navbar() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] p-0 pt-6 bg-background flex flex-col">
-              <div className="px-6 mb-6">
-                <Logo />
-              </div>
-              <nav className="flex flex-col space-y-3 px-4 flex-grow">
+              <SheetHeader className="px-6 mb-4 border-b pb-4">
+                <SheetTitle className="text-lg font-semibold flex items-center">
+                  <Menu className="mr-2 h-5 w-5 text-primary" />
+                  Navigation Menu
+                </SheetTitle>
+                <div className="mt-2">
+                 <Logo />
+                </div>
+              </SheetHeader>
+              <nav className="flex flex-col space-y-3 px-4 flex-grow mt-4">
                 {navItems.map((item) => (
                   <NavLink key={item.href} {...item} />
                 ))}
@@ -91,3 +98,4 @@ export default function Navbar() {
     </header>
   );
 }
+
