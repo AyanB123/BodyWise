@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'BodyWise - AI Body Analysis',
-  description: 'Understand your body composition with AI-powered analysis and guidance.',
+  title: 'BodyWise | AI-Powered Body Composition Analysis',
+  description: 'Discover your body composition with BodyWise. AI-driven analysis, personalized insights, and progress tracking for your health and fitness journey.',
 };
 
 export default function RootLayout({
@@ -26,9 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen bg-background text-foreground`}>
         <Navbar />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <main className="flex-grow container mx-auto px-4 py-8 md:py-12">
           {children}
         </main>
         <Toaster />

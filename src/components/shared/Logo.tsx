@@ -1,33 +1,29 @@
+
 import Link from 'next/link';
 import type { SVGProps } from 'react';
 
-function AtomIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="1" />
-      <path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z" />
-      <path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z" />
-    </svg>
-  )
-}
+// Using a more abstract/fitting icon - Target or a stylized human figure might be good.
+// For simplicity, let's use a Lucide icon that fits.
+import { Target } from 'lucide-react'; // Or use a custom SVG if available.
+
+// If you had a custom SVG:
+// function BodyWiseIcon(props: SVGProps<SVGSVGElement>) {
+//   return (
+//     <svg /* your modern SVG code here */ {...props} />
+//   )
+// }
 
 
 export default function Logo() {
   return (
-    <Link href="/" className="flex items-center space-x-2 text-2xl font-bold text-primary hover:text-primary/90 transition-colors">
-      <AtomIcon className="h-8 w-8 text-accent" />
-      <span>BodyWise</span>
+    <Link 
+      href="/" 
+      className="flex items-center space-x-2.5 text-3xl font-bold text-primary hover:text-primary/80 transition-colors group"
+      aria-label="BodyWise Home"
+    >
+      {/* Replace with BodyWiseIcon if you have a custom SVG */}
+      <Target className="h-9 w-9 text-accent group-hover:text-accent/80 transition-colors" />
+      <span className="tracking-tight">Body<span className="font-normal text-foreground/80 group-hover:text-foreground/70 transition-colors">Wise</span></span>
     </Link>
   );
 }

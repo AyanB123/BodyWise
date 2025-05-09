@@ -8,95 +8,96 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 98%; /* Light Gray / White */
-    --foreground: 224 71% 4%; /* Dark Blue for text */
+    --background: 210 60% 98%; /* Very Light Cool Gray */
+    --foreground: 220 20% 25%; /* Dark Cool Gray-Blue for text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 71% 4%;
+    --card: 210 60% 100%; /* White */
+    --card-foreground: 220 20% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71% 4%;
+    --popover: 210 60% 100%;
+    --popover-foreground: 220 20% 25%;
 
-    --primary: 180 100% 25%; /* Teal #008080 */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 200 85% 50%; /* Vibrant Cyan-Blue */
+    --primary-foreground: 210 60% 98%; /* Light Gray for text on primary */
 
-    --secondary: 210 40% 96.1%; /* Lighter gray for secondary elements */
-    --secondary-foreground: 224 71% 4%;
+    --secondary: 210 30% 93%; /* Light Gray for secondary elements */
+    --secondary-foreground: 220 15% 40%;
 
-    --muted: 210 40% 90%;
-    --muted-foreground: 210 30% 45.1%; /* Adjusted for better readability */
+    --muted: 210 30% 90%;
+    --muted-foreground: 210 20% 50%; 
 
-    --accent: 20 60% 50%; /* Burnt Orange #CC6633 */
+    --accent: 30 90% 60%; /* Warm Apricot/Orange */
     --accent-foreground: 0 0% 100%; /* White */
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 75% 55%; /* Softer Red */
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 89.8%;
-    --input: 0 0% 92%; 
-    --ring: 180 100% 30%; /* Teal for focus rings */
-    --radius: 0.5rem;
+    --border: 210 20% 85%; /* Softer border */
+    --input: 210 30% 92%; 
+    --ring: 200 85% 55%; /* Primary color for focus rings */
+    --radius: 0.75rem; /* Slightly larger radius for a softer, modern feel */
 
-    --chart-1: hsl(180, 100%, 25%); /* Teal */
-    --chart-2: hsl(20, 60%, 50%); /* Burnt Orange */
-    --chart-3: hsl(210, 40%, 50%); /* Muted Blue */
-    --chart-4: hsl(40, 70%, 55%); /* Yellowish */
-    --chart-5: hsl(300, 50%, 50%); /* Purpleish */
+    --chart-1: hsl(200, 85%, 50%); /* primary */
+    --chart-2: hsl(30, 90%, 60%);  /* accent */
+    --chart-3: hsl(200, 70%, 70%); /* lighter primary */
+    --chart-4: hsl(30, 80%, 75%);  /* lighter accent */
+    --chart-5: hsl(220, 20%, 60%); /* neutral cool gray */
 
-    /* Sidebar variables - keeping them as they might be used by some shadcn components internally or for future use */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar variables - derived from new theme */
+    --sidebar-background: 210 40% 96%; /* Slightly off-white */
+    --sidebar-foreground: 220 20% 30%;
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: hsl(var(--primary) / 0.1); /* Subtle accent for hover */
+    --sidebar-accent-foreground: hsl(var(--primary));
+    --sidebar-border: 210 20% 88%;
+    --sidebar-ring: hsl(var(--ring));
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 0 0% 98%;
+    --background: 220 20% 10%; /* Deep Charcoal Blue */
+    --foreground: 210 30% 90%; /* Light Gray for text */
 
-    --card: 224 71% 6%;
-    --card-foreground: 0 0% 98%;
+    --card: 220 20% 13%; /* Slightly lighter than background */
+    --card-foreground: 210 30% 90%;
 
-    --popover: 224 71% 6%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 220 20% 13%;
+    --popover-foreground: 210 30% 90%;
 
-    --primary: 180 100% 30%; 
-    --primary-foreground: 0 0% 100%;
+    --primary: 200 75% 55%; /* Vibrant Cyan-Blue (Dark Mode) */
+    --primary-foreground: 220 20% 10%; /* Dark for text on primary */
 
-    --secondary: 210 40% 12.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 220 15% 20%; /* Darker Gray */
+    --secondary-foreground: 210 30% 85%;
 
-    --muted: 210 40% 12.9%;
-    --muted-foreground: 210 30% 63.9%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 210 20% 65%;
 
-    --accent: 20 60% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 30 80% 65%; /* Warm Apricot/Orange (Dark Mode) */
+    --accent-foreground: 220 20% 10%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 65% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 40% 14.9%;
-    --input: 210 40% 14.9%;
-    --ring: 180 100% 35%;
+    --border: 220 15% 25%;
+    --input: 220 15% 22%;
+    --ring: 200 75% 60%;
 
-    --chart-1: hsl(180, 100%, 30%);
-    --chart-2: hsl(20, 60%, 55%);
-    --chart-3: hsl(210, 40%, 60%);
-    --chart-4: hsl(40, 70%, 65%);
-    --chart-5: hsl(300, 50%, 60%);
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --chart-1: hsl(200, 75%, 55%);
+    --chart-2: hsl(30, 80%, 65%);
+    --chart-3: hsl(200, 60%, 75%);
+    --chart-4: hsl(30, 70%, 80%);
+    --chart-5: hsl(220, 15%, 55%);
+    
+    /* Sidebar variables - dark mode */
+    --sidebar-background: 220 20% 12%; 
+    --sidebar-foreground: 210 30% 88%;
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: hsl(var(--primary) / 0.15);
+    --sidebar-accent-foreground: hsl(var(--primary));
+    --sidebar-border: 220 15% 22%;
+    --sidebar-ring: hsl(var(--ring));
   }
 }
 
@@ -113,4 +114,9 @@ body {
   main {
     flex-grow: 1;
   }
+}
+
+/* Subtle overall page transition */
+html {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }

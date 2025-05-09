@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,9 +63,9 @@ export default {
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: 'var(--radius)', // Using the CSS variable from globals.css
+  			md: 'calc(var(--radius) - 0.25rem)', // Adjusted for new base radius
+  			sm: 'calc(var(--radius) - 0.5rem)'  // Adjusted for new base radius
   		},
   		keyframes: {
   			'accordion-down': {
