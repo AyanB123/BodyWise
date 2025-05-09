@@ -2,7 +2,7 @@ import CaptureWorkflow from "@/components/capture/CaptureWorkflow";
 
 export default function CapturePage() {
   return (
-    <div>
+    <div className="flex flex-col flex-grow">
       <CaptureWorkflow />
     </div>
   );

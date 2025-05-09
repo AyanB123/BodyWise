@@ -40,10 +40,34 @@ export interface AnalysisResult {
 }
 
 export const POSE_TYPES = [
-  { id: 'front', name: 'Front View', description: 'Stand facing the camera, arms slightly apart from your body, palms facing forward.' },
-  { id: 'side_left', name: 'Side View (Left)', description: 'Stand with your left side to the camera, arms relaxed at your sides.' },
-  { id: 'side_right', name: 'Side View (Right)', description: 'Stand with your right side to the camera, arms relaxed at your sides.' },
-  { id: 'back', name: 'Back View', description: 'Stand with your back to the camera, arms slightly apart from your body.' },
+  { 
+    id: 'front', 
+    name: 'Front View', 
+    description: 'Stand facing the camera, arms slightly apart from your body, palms facing forward. Ensure your whole body is visible.',
+    shortInstruction: 'Face camera, arms slightly apart, palms forward.',
+    // silhouette: '/silhouettes/front-view.svg' // Example path
+  },
+  { 
+    id: 'side_left', 
+    name: 'Left Side View', 
+    description: 'Stand with your left side to the camera, arms relaxed at your sides. Keep your body straight.',
+    shortInstruction: 'Left side to camera, arms relaxed.',
+    // silhouette: '/silhouettes/left-side-view.svg'
+  },
+  { 
+    id: 'side_right', 
+    name: 'Right Side View', 
+    description: 'Stand with your right side to the camera, arms relaxed at your sides. Keep your body straight.',
+    shortInstruction: 'Right side to camera, arms relaxed.',
+    // silhouette: '/silhouettes/right-side-view.svg'
+  },
+  { 
+    id: 'back', 
+    name: 'Back View', 
+    description: 'Stand with your back to the camera, arms slightly apart from your body. Stand straight.',
+    shortInstruction: 'Back to camera, arms slightly apart.',
+    // silhouette: '/silhouettes/back-view.svg'
+  },
 ] as const;
 
 export type PoseType = typeof POSE_TYPES[number]['id'];
