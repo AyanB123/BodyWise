@@ -18,16 +18,22 @@ body {
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 10%;
 
-    --primary: 25 95% 53%; /* Strong, clear orange (Burnt Orange like original spec) */
+    /* Primary: Burnt Orange (User Spec) */
+    --primary: 25 95% 53%; /* Hex: #f97316 (approx) */
     --primary-foreground: 0 0% 100%; /* White */
-
-    --secondary: 240 4.8% 95.9%; /* Light gray */
+    
+    /* Secondary: Teal (User Spec) - Changed to Accent as per typical ShadCN */
+    /* --secondary: 180 70% 40%; /* Hex: #008080 */
+    /* --secondary-foreground: 0 0% 100%; /* White */
+    
+    --secondary: 240 4.8% 95.9%; /* Light gray - standard ShadCN secondary */
     --secondary-foreground: 240 10% 20%; /* Darker gray for text on secondary */
 
     --muted: 240 4.8% 93%; /* Slightly darker light gray */
     --muted-foreground: 240 5% 45%; 
 
-    --accent: 180 70% 40%; /* Teal (from original spec, for consistency if needed) */
+    /* Accent: Teal (User Spec) */
+    --accent: 180 70% 40%; /* Hex: #008080 */
     --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 75% 55%; /* Softer Red */
@@ -37,7 +43,7 @@ body {
     --input: 240 5.9% 92%; 
     --ring: 25 90% 58%; /* Primary color for focus rings */
     
-    --radius: 1rem; /* Modern, more rounded look */
+    --radius: 0.75rem; /* Slightly less rounded than default 1rem for a sleeker look */
 
     --chart-1: hsl(var(--primary)); 
     --chart-2: hsl(var(--accent));  
@@ -57,52 +63,54 @@ body {
   }
 
   .dark {
-    /* Dark Theme - Inspired by the provided image */
-    --background: 220 20% 7%; /* Very dark, almost black, slightly blueish */
-    --foreground: 210 40% 90%; /* Light cool gray */
+    /* Dark Theme - Sleek and Modern (2025 aesthetic) */
+    --background: 224 71% 4%; /* Very dark blue, almost black: #01050f */
+    --foreground: 210 40% 96%; /* Light cool gray for text: #f0f4f8 */
 
-    --card: 220 15% 12%; /* Dark gray, slightly lighter than background */
-    --card-foreground: 210 40% 90%;
+    --card: 224 71% 9%; /* Slightly lighter dark blue for cards: #0a0f1e */
+    --card-foreground: 210 40% 96%;
 
-    --popover: 220 15% 9%; /* Even darker for popovers */
-    --popover-foreground: 210 40% 90%;
+    --popover: 224 71% 4%; /* Same as background for seamless popovers */
+    --popover-foreground: 210 40% 96%;
 
-    --primary: 35 100% 60%; /* Vibrant, glowing orange - the main accent */
-    --primary-foreground: 20 80% 10%; /* Very dark, for text on primary buttons */
-
-    --secondary: 220 10% 20%; /* A muted, darker gray for less emphasis */
-    --secondary-foreground: 210 30% 70%;
-
-    --muted: 220 10% 25%;
-    --muted-foreground: 210 20% 55%;
-
-    /* Accent will be the same as primary for this design */
-    --accent: 35 100% 60%; 
-    --accent-foreground: 20 80% 10%;
-
-    --destructive: 0 70% 50%; /* A deep red that fits the dark theme */
-    --destructive-foreground: 0 0% 95%;
-
-    --border: 220 10% 22%; /* Subtle, dark border, slightly lighter than card */
-    --input: 220 10% 18%; /* Dark input fields */
-    --ring: 35 100% 65%; /* Slightly lighter orange for focus rings */
+    /* Primary: Burnt Orange (User Spec) - make it pop on dark bg */
+    --primary: 25 100% 60%; /* Hex: #ff7b00 (vibrant orange) */
+    --primary-foreground: 210 100% 10%; /* Very dark, almost black for text on primary */
     
-    /* --radius is already 1rem from :root */
+    /* Secondary: A darker, muted version of card for subtle distinctions */
+    --secondary: 224 71% 12%; /* Hex: #0e1428 */
+    --secondary-foreground: 210 30% 80%; /* Lighter gray for text on secondary */
 
-    --chart-1: hsl(var(--primary)); /* Orange */
-    --chart-2: hsl(25 90% 58%); /* A slightly redder/warmer orange */
-    --chart-3: hsl(200 60% 55%); /* A muted cyan/blue for contrast */
-    --chart-4: hsl(270 50% 60%); /* A muted purple for contrast */
-    --chart-5: hsl(220 10% 45%); /* Neutral dark gray */
+    --muted: 224 71% 15%; /* Hex: #161d31 */
+    --muted-foreground: 210 25% 65%; /* #8998b3 */
+
+    /* Accent: Teal (User Spec) - ensure good contrast */
+    --accent: 175 90% 38%; /* Hex: #08aac2 (vibrant teal) */
+    --accent-foreground: 210 100% 10%; /* Very dark for text on accent */
+
+    --destructive: 0 70% 55%; /* Hex: #c43030 (deep, clear red) */
+    --destructive-foreground: 0 0% 98%; /* Near white */
+
+    --border: 224 71% 15%; /* Same as muted, for subtle borders: #161d31 */
+    --input: 224 71% 12%; /* Same as secondary, for input fields: #0e1428 */
+    --ring: 25 100% 65%; /* Lighter, more vibrant orange for focus rings: #ff8c1a */
+    
+    /* --radius is already 0.75rem from :root */
+
+    --chart-1: hsl(var(--primary)); 
+    --chart-2: hsl(var(--accent));  
+    --chart-3: hsl(25, 90%, 70%); /* Lighter primary for dark */
+    --chart-4: hsl(175, 80%, 50%);  /* Lighter accent for dark */
+    --chart-5: hsl(210, 15%, 55%); /* Neutral mid-gray for dark */
     
     /* Sidebar variables - dark mode */
-    --sidebar-background: 220 18% 9%; 
-    --sidebar-foreground: 210 35% 88%;
+    --sidebar-background: 224 71% 7%; /* #050917 slightly darker than card */
+    --sidebar-foreground: 210 38% 92%; /* #e3e9f0 */
     --sidebar-primary: hsl(var(--primary));
     --sidebar-primary-foreground: hsl(var(--primary-foreground));
-    --sidebar-accent: hsl(var(--primary) / 0.12);
+    --sidebar-accent: hsl(var(--primary) / 0.15); /* More pronounced accent for dark */
     --sidebar-accent-foreground: hsl(var(--primary));
-    --sidebar-border: 220 10% 18%;
+    --sidebar-border: 224 71% 12%; /* #0e1428 */
     --sidebar-ring: hsl(var(--ring));
   }
 }
